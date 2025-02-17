@@ -24,7 +24,6 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import VerifyCode from "./pages/VerifyCode/VerifyCode";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import UserProvider from "./contexts/User.context";
-// import WishList from "./pages/Wishlist/Wishlist";
 
 
 
@@ -114,7 +113,7 @@ let router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             {" "}
-            <WishList />
+            <Wishlist />
           </ProtectedRoute>
         ),
       },
