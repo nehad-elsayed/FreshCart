@@ -19,12 +19,13 @@ import Address from "./pages/Address/Address";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Products from "./pages/Products/Products";
-import Wishlist from "./pages/Wishlist/Wishlist";
+import Wishlist from "./pages/WishList/WishList";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import VerifyCode from "./pages/VerifyCode/VerifyCode";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import UserProvider from "./contexts/User.context";
 // import WishList from "./pages/Wishlist/Wishlist";
+
 
 
 let query = new QueryClient();
@@ -113,7 +114,7 @@ let router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             {" "}
-            <Wishlist />
+            <WishList />
           </ProtectedRoute>
         ),
       },
