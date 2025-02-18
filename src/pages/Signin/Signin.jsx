@@ -125,7 +125,7 @@ export default function SignIn() {
           <Button
             type="submit"
             variant="shadow"
-            className=" animate__animated animate__delay-1s animate__backInUp animate-slow text-white bg-green-600 dark:bg-sky-800"
+            className=" animate__animated  animate__backInUp animate-slow text-white bg-green-600 dark:bg-sky-800"
             isLoading={isLoading}
           >
             Login

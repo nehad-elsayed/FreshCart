@@ -109,13 +109,9 @@ export default function Navbar() {
               <Link to={"/signin"}>Login</Link>
             </NavbarItem>
             <NavbarItem>
-              <Button
-                color="success"
-                className="dark:bg-sky-700 dark:text-white"
-                variant="flat"
-              >
-                <Link to={"/register"}> Sign Up</Link>
-              </Button>
+            
+                <Link to={"/register"} className="bg-green-200 dark:bg-sky-700 p-2 rounded-md"> Sign Up</Link>
+         
             </NavbarItem>
           </NavbarContent>
         )}
