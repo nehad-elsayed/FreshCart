@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 export default function useChangePasswordType() {
-    const [changePasswordType, setChangePasswordType] = useState(false);
+  const [changePasswordType, setChangePasswordType] = useState(false);
 
-    return { changePasswordType, setChangePasswordType };
+  return { changePasswordType, setChangePasswordType };
 }
+//will use in reset password

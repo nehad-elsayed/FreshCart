@@ -14,6 +14,7 @@ export default function Home() {
   // const [products, setProducts] = useState([]);
   // const [isLoadingProducts, setIsLoadingProducts] = useState(true);
 
+
   function getProducts() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
@@ -57,6 +58,8 @@ export default function Home() {
   // if (isLoadingProducts) {
   //   return <Loading />;
   // }
+
+
 
   return (
     <>

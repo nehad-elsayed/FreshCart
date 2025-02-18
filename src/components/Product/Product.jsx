@@ -1,6 +1,6 @@
 // import { Button } from "@heroui/react";
 import { Button } from "@heroui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { addProductToCart, addProductToWishList } from "../../services/secvices";
 import 'animate.css';
@@ -12,7 +12,30 @@ export default function Product({ product }) {
 
 const[addToCartLoading,setAddToCartLoading]=useState(false)
 const[addToWishListLoading,setAddToWishListLoading]=useState(false)
+// const[productID,setProductID]=useState()
+// const [wishlist, setWishlist] = useState([]);
+// const [isInWishlist, setIsInWishlist] = useState(false);
+// // Fetch wishlist items
+// useEffect(() => {
+//   const fetchWishlist = async (productId) => {
+//     try {
+//       const response = await axios.get(
+//         `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
+//       );
+//       setWishlist(response.data.data);
+//       setProductID(data.data.product._id)
 
+//     } catch (error) {
+//       console.error("Error fetching wishlist", error);
+//     }
+//   };
+
+//   fetchWishlist();
+// }, []);
+// // Check if the product is in the wishlist
+// useEffect(() => {
+//   setIsInWishlist(wishlist.some((item) => item.id === productID));
+// }, [wishlist, productID]);
 
   return (
     <>

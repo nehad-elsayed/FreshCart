@@ -1,8 +1,9 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { addProductToCart, removeWishListItem } from "../../services/secvices";
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import { Button, CardFooter } from "@heroui/react";
+import axios from "axios";
 
 export default function WishListProduct({
   product,
@@ -11,6 +12,33 @@ export default function WishListProduct({
 }) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [isLoadingWish, setIsLoadingWish] = useState(false);
+const[productID,setProductID]=useState()
+
+const [wishlist, setWishlist] = useState([]);
+const [isInWishlist, setIsInWishlist] = useState(false);
+
+// Fetch wishlist items
+useEffect(() => {
+  const fetchWishlist = async (productId) => {
+    try {
+      const response = await axios.get(
+        `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
+      );
+      setWishlist(response.data.data);
+      setProductID(response.data.data.product._id)
+
+    } catch (error) {
+      console.error("Error fetching wishlist", error);
+    }
+  };
+
+  fetchWishlist();
+}, []);
+// Check if the product is in the wishlist
+useEffect(() => {
+  setIsInWishlist(wishlist.some((item) => item.id === productID));
+}, [wishlist, productID]);
+
 
   return (
     <>
@@ -55,15 +83,21 @@ export default function WishListProduct({
           <hr />
 
           <Button
-            onPress={() =>
+            onPress={
+              () =>
             removeWishListItem(product._id, setIsLoadingWish, setWishlistData,refetch)}
             isLoading={isLoadingWish}
             className=" min-w-0 p-2 "
             endContent={
-              <span>
-                <i className="fa-solid fa-heart text-red-500"></i>
-              </span>
+              <span style={{ color: isInWishlist ? "red" : "gray", fontSize: "24px" }}>
+              ❤️
+            </span>
             }
+            // endContent={
+            //   <span>
+            //     <i className="fa-solid fa-heart text-red-500"></i>
+            //   </span>
+            // }
             color="transparent"
           ></Button>
         </CardFooter>
