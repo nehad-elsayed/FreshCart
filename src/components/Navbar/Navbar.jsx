@@ -110,10 +110,8 @@ export default function Navbar() {
             </NavbarItem>
             <NavbarItem>
               <Button
-                as={Link}
                 color="success"
                 className="dark:bg-sky-700 dark:text-white"
-                href="#"
                 variant="flat"
               >
                 <Link to={"/register"}> Sign Up</Link>
