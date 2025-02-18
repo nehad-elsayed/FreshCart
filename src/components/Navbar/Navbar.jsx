@@ -105,13 +105,17 @@ export default function Navbar() {
         ) : (
           //else (:) here
           <NavbarContent justify="end">
-            <NavbarItem className="hidden lg:flex">
+            <NavbarItem className=" lg:flex">
               <Link to={"/signin"}>Login</Link>
             </NavbarItem>
             <NavbarItem>
-            
-                <Link to={"/register"} className="bg-green-200 dark:bg-sky-700 p-2 rounded-md"> Sign Up</Link>
-         
+              <Link
+                to={"/register"}
+                className="bg-green-200 dark:bg-sky-700 p-2 rounded-md"
+              >
+                {" "}
+                Sign Up
+              </Link>
             </NavbarItem>
           </NavbarContent>
         )}
