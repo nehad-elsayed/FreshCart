@@ -36,7 +36,7 @@ useEffect(() => {
 }, []);
 // Check if the product is in the wishlist
 useEffect(() => {
-  setIsInWishlist(wishlist.some((item) => item.id === productID));
+  setIsInWishlist(wishlist.some((item) => item.id == productID));
 }, [wishlist, productID]);
 
 

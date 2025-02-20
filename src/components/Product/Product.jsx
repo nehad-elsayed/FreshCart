@@ -2,40 +2,39 @@
 import { Button } from "@heroui/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { addProductToCart, addProductToWishList } from "../../services/secvices";
-import 'animate.css';
-
-
-
+import {
+  addProductToCart,
+  addProductToWishList,
+} from "../../services/secvices";
+import "animate.css";
 
 export default function Product({ product }) {
+  const [addToCartLoading, setAddToCartLoading] = useState(false);
+  const [addToWishListLoading, setAddToWishListLoading] = useState(false);
+  // const[productID,setProductID]=useState()
+  // const [wishlist, setWishlist] = useState([]);
+  // const [isInWishlist, setIsInWishlist] = useState(false);
+  // // Fetch wishlist items
+  // useEffect(() => {
+  //   const fetchWishlist = async (productId) => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
+  //       );
+  //       setWishlist(response.data.data);
+  //       setProductID(data.data.product._id)
 
-const[addToCartLoading,setAddToCartLoading]=useState(false)
-const[addToWishListLoading,setAddToWishListLoading]=useState(false)
-// const[productID,setProductID]=useState()
-// const [wishlist, setWishlist] = useState([]);
-// const [isInWishlist, setIsInWishlist] = useState(false);
-// // Fetch wishlist items
-// useEffect(() => {
-//   const fetchWishlist = async (productId) => {
-//     try {
-//       const response = await axios.get(
-//         `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
-//       );
-//       setWishlist(response.data.data);
-//       setProductID(data.data.product._id)
+  //     } catch (error) {
+  //       console.error("Error fetching wishlist", error);
+  //     }
+  //   };
 
-//     } catch (error) {
-//       console.error("Error fetching wishlist", error);
-//     }
-//   };
-
-//   fetchWishlist();
-// }, []);
-// // Check if the product is in the wishlist
-// useEffect(() => {
-//   setIsInWishlist(wishlist.some((item) => item.id === productID));
-// }, [wishlist, productID]);
+  //   fetchWishlist();
+  // }, []);
+  // // Check if the product is in the wishlist
+  // useEffect(() => {
+  //   setIsInWishlist(wishlist.some((item) => item.id === productID));
+  // }, [wishlist, productID]);
 
   return (
     <>
@@ -49,13 +48,14 @@ const[addToWishListLoading,setAddToWishListLoading]=useState(false)
             src={product.imageCover}
             alt="product image"
           />
-         {
-          product.priceAfterDiscount &&  <span className="absolute top-0 left-0  me-3 mt-1 mb-3 rounded-lg bg-black dark:bg-sky-600 dark:text-white p-2 text-center text-sm font-medium text-white">
-         {
-           Math.round(100 - (product.priceAfterDiscount *100 /product.price) )
-         }%
-         </span>
-         }
+          {product.priceAfterDiscount && (
+            <span className="absolute top-0 left-0  me-3 mt-1 mb-3 rounded-lg bg-black dark:bg-sky-600 dark:text-white p-2 text-center text-sm font-medium text-white">
+              {Math.round(
+                100 - (product.priceAfterDiscount * 100) / product.price
+              )}
+              %
+            </span>
+          )}
         </Link>
         <div className="mt-4 px-5 pb-5">
           <Link to={"/productDetails/" + product._id}>
@@ -67,19 +67,20 @@ const[addToWishListLoading,setAddToWishListLoading]=useState(false)
             </h5>
           </Link>
           <div className="mt-2 mb-5 flex flex-col gap-1 items-center justify-between ">
-            {
-              product.priceAfterDiscount ? <p>
+            {product.priceAfterDiscount ? (
+              <p>
+                <span className="text-3xl font-bold text-slate-100 dark:text-yellow-700">
+                  {product.priceAfterDiscount}$
+                </span>
+                <span className="text-sm text-slate-100 dark:text-sky-600 line-through m-px">
+                  {product.price}$
+                </span>
+              </p>
+            ) : (
               <span className="text-3xl font-bold text-slate-100 dark:text-yellow-700">
-                {product.priceAfterDiscount}$
+                {product.price}$
               </span>
-              <span className="text-sm text-slate-100 dark:text-sky-600 line-through m-px">
-                {product.price }$
-              </span> 
-            </p>
-            :    <span className="text-3xl font-bold text-slate-100 dark:text-yellow-700">
-            {product.price}$
-          </span>
-            }
+            )}
             <div className="flex items-center">
               {[1, 2, 3, 4, 5].map((rate, index) => {
                 return rate < product.ratingsAverage ? (
@@ -112,7 +113,11 @@ const[addToWishListLoading,setAddToWishListLoading]=useState(false)
               </span>
             </div>
           </div>
-          <Button   isLoading={addToCartLoading} onPress={()=>addProductToCart(product._id,setAddToCartLoading)} className="w-full hover:opacity-90 flex items-center mx-auto justify-center rounded-md bg-slate-900 dark:bg-slate-600 dark:text-white px-5 py-2 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 animate__animated animate__bounceInDown animate__delay-3s animate__slow ">
+          <Button
+            isLoading={addToCartLoading}
+            onPress={() => addProductToCart(product._id, setAddToCartLoading)}
+            className="w-full hover:opacity-90 flex items-center mx-auto justify-center rounded-md bg-slate-900 dark:bg-slate-600 dark:text-white px-5 py-2 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 animate__animated animate__bounceInDown animate__delay-3s animate__slow "
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2 h-6 w-6"
@@ -129,14 +134,23 @@ const[addToWishListLoading,setAddToWishListLoading]=useState(false)
             </svg>
             Add to cart
           </Button>
-
         </div>
         <div>
-          <Button isLoading={addToWishListLoading} onPress={()=>addProductToWishList(product._id,setAddToWishListLoading)} className="icon my-1 w-fit  md:w-60 rounded-lg text-center  mx-auto bg-sky-900 text-white"  color="" > Add to wishList <span><i className="fa-solid fa-heart text-white"></i></span> </Button>
+          <Button
+            isLoading={addToWishListLoading}
+            onPress={() =>
+              addProductToWishList(product._id, setAddToWishListLoading)
+            }
+            className="icon my-1 w-fit  md:w-60 rounded-lg text-center  mx-auto bg-sky-900 text-white"
+            color=""
+          >
+            {" "}
+            Add to wishList{" "}
+            <span>
+              <i className="fa-solid fa-heart text-white"></i>
+            </span>{" "}
+          </Button>
         </div>
-   
-
-
       </div>
     </>
   );

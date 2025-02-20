@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { authContext } from "../../contexts/authContext";
 import "animate.css";
+import { Helmet } from "react-helmet";
 // import cookies from "cookies";
 
 export default function SignIn() {
@@ -31,32 +32,13 @@ export default function SignIn() {
       ),
   });
 
-  // function validate() {
-  //   const errors = {};
 
-  //   //email validation
-  //   if (values.email == "") {
-  //     errors.email = "Email is Required";
-  //   } else if (
-  //     !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(values.email)
-  //   ) {
-  //     errors.email = "Email is Invalid";
-  //   }
-
-  //   //password validation
-  //   if (values.password == "") {
-  //     errors.password = "Password is Required";
-  //   }
-
-  //   return errors;
-  // }
 
   const initialValues = {
-    name: "",
+    
     email: "",
-    password: "",
-    rePassword: "",
-    phone: "",
+    password:"",
+ 
   };
 
   function onSubmit() {
@@ -93,6 +75,13 @@ export default function SignIn() {
 
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+        <meta
+          name="description"
+          content="Welcome to our Products page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
+        />
+      </Helmet>
       <form onSubmit={handleSubmit}>
         <div className="w-11/12 sm:w-[50%] py-20 mx-auto grid gap-4">
           <div className="">

@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import "animate.css"
+import { Helmet } from "react-helmet";
 
 export default function Register() {
   const [isLoading, setIsloading] = useState(false);
@@ -80,6 +81,13 @@ export default function Register() {
 
   return (
     <>
+    <Helmet>
+        <title>SignUp</title>
+        <meta
+          name="description"
+          content="Welcome to our Products page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
+        />
+      </Helmet>
       <form onSubmit={handleSubmit}>
         <div className="w-11/12 sm:w-2/3 py-20 mx-auto grid md:grid-cols-2 gap-4">
           <div className="md:col-span-2">

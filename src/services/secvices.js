@@ -132,7 +132,6 @@ export  async function addProductToCart(productId,setAddToCartLoading){
           token: localStorage.getItem("token")
         }
       })
-    
       setAddToWishListLoading(false)
       toast.success(data.message, {
         position: "top-center",
