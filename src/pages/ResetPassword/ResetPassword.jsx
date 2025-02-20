@@ -1,4 +1,4 @@
-// import React, { useContext, useState } from "react";
+// import React, {  useState } from "react";
 // import { Input } from "@heroui/input";
 // import { Button } from "@heroui/react";
 // import { useFormik } from "formik";
@@ -113,16 +113,17 @@
 
 import axios from "axios";
 import { useFormik } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Helmet } from "react-helmet";
 import useChangePasswordType from "../../Hooks/useChangePasswordType";
 import { userContext } from "../../contexts/User.context";
-import { Input } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 
 export default function ResetPassword() {
+  const[isLoading , setIsLoading]=useState(false)
   const { setToken, token } = useContext(userContext);
   let { changePasswordType, setChangePasswordType } = useChangePasswordType();
 
@@ -132,6 +133,7 @@ export default function ResetPassword() {
     let toastId;
 
     try {
+      setIsLoading(true)
       const options = {
         method: "PUT",
         url: "https://ecommerce.routemisr.com/api/v1/auth/resetPassword",
@@ -162,6 +164,7 @@ export default function ResetPassword() {
           ),
         }
       );
+      setIsLoading(false)
 
       navigate("/");
     } catch (error) {
@@ -265,9 +268,9 @@ export default function ResetPassword() {
             </p>
           )}
           <footer className="text-center">
-            <button type="submit" className="btn-primary w-full py-1">
+            <Button color="warning" isLoading={isLoading} type="submit" className=" block mx-auto ">
               Reset Password
-            </button>
+            </Button>
             <Link
               className="text-xs text-primary font-bold inline-block mt-4 hover:underline"
               to="/signin"

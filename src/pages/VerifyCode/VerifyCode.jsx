@@ -1,11 +1,13 @@
-import { Input } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 import axios from "axios";
 import {  useFormik } from "formik";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function VerifyCode() {
+    const[isLoading,setIsLoading]=useState(false)
     let navigate = useNavigate();
 
     function clearInputs() {
@@ -16,6 +18,7 @@ export default function VerifyCode() {
         let toastId;
 
         try {
+            setIsLoading(true)
             const options = {
                 method: "POST",
                 url: "https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode",
@@ -37,14 +40,24 @@ export default function VerifyCode() {
                         </span>
                     ),
                 });
-
+                setIsLoading(false)
                 navigate("/resetpassword");
             }
         } catch (error) {
             clearInputs();
             toast.dismiss(toastId);
             toast.error(error.response.data.message);
+            errorFunction()
         }
+        
+      function errorFunction(){
+        setIsLoading(false)
+        return alert("Incorrect Code")
+        
+      }
+
+
+
     }
     const formik = useFormik({
         initialValues: {
@@ -81,9 +94,9 @@ export default function VerifyCode() {
                     </div>
                     <footer className="text-center">
                         <div className="w-full">
-                            <button type="submit" className="btn-primary py-1">
+                            <Button isLoading={isLoading} color="warning" type="submit" className="btn-primary py-1">
                                 Next
-                            </button>
+                            </Button>
                         </div>
 
                         <Link

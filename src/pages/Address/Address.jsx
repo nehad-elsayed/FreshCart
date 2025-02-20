@@ -42,8 +42,8 @@ export default function Address() {
             token: localStorage.getItem("token")
           },
           params:{
-            // url: "http://localhost:5173"
-            url: "https://frech-cart-sigma.vercel.app/"
+            url: "http://localhost:5173"
+            // url: "https://frech-cart-sigma.vercel.app/"
           }
         }
   
