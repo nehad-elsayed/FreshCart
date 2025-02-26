@@ -11,6 +11,12 @@ import "animate.css";
 export default function Product({ product }) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToWishListLoading, setAddToWishListLoading] = useState(false);
+  const [addedToWishlist, setAddedToWishlist] = useState(false);
+
+  const handleAddToWishlist = () => {
+    addProductToWishList(product._id, setAddToWishListLoading);
+    setAddedToWishlist(true);
+  };
   // const[productID,setProductID]=useState()
   // const [wishlist, setWishlist] = useState([]);
   // const [isInWishlist, setIsInWishlist] = useState(false);
@@ -136,7 +142,7 @@ export default function Product({ product }) {
           </Button>
         </div>
         <div>
-          <Button
+          {/* <Button
             isLoading={addToWishListLoading}
             onPress={() =>
               addProductToWishList(product._id, setAddToWishListLoading)
@@ -149,6 +155,27 @@ export default function Product({ product }) {
             <span>
               <i className="fa-solid fa-heart text-white"></i>
             </span>{" "}
+          </Button> */}
+
+          <Button
+            isLoading={addToWishListLoading}
+            onPress={handleAddToWishlist}
+            href="#"
+            className={` mx-auto my-4 bg-gray-200 flex gap-2 items-center text-gray-800  px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
+   ${
+     addedToWishlist ? (
+       <i className="fa-solid fa-heart text-xl text-red-500"></i>
+     ) : (
+       <i className="fa-solid fa-heart text-xl text-red"></i>
+     )
+   }`}
+          >
+            <i
+              className={`fa-solid fa-heart mr-2 h-6 w-6 ${
+                addedToWishlist ? "text-red-500" : "text-white"
+              }`}
+            ></i>
+            Wishlist
           </Button>
         </div>
       </div>

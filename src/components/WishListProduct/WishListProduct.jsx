@@ -17,7 +17,6 @@ const[productID,setProductID]=useState()
 const [wishlist, setWishlist] = useState([]);
 const [isInWishlist, setIsInWishlist] = useState(false);
 
-// Fetch wishlist items
 useEffect(() => {
   const fetchWishlist = async (productId) => {
     try {
@@ -34,7 +33,6 @@ useEffect(() => {
 
   fetchWishlist();
 }, []);
-// Check if the product is in the wishlist
 useEffect(() => {
   setIsInWishlist(wishlist.some((item) => item.id == productID));
 }, [wishlist, productID]);
@@ -93,11 +91,7 @@ useEffect(() => {
               ❤️
             </span>
             }
-            // endContent={
-            //   <span>
-            //     <i className="fa-solid fa-heart text-red-500"></i>
-            //   </span>
-            // }
+           
             color="transparent"
           ></Button>
         </CardFooter>

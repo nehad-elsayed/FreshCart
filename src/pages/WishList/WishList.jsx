@@ -11,6 +11,9 @@ import { Helmet } from "react-helmet";
 export default function Wishlist() {
   const [wishlistData, setWishlistData] = useState(null);
   const navigate = useNavigate();
+
+
+  
   function getWishListProducts() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/wishlist", {
       headers: {

@@ -4,17 +4,25 @@ import { useParams } from "react-router-dom";
 import Loading from "../../components/LoadingScreen/Loading";
 import Slider from "react-slick";
 import { Button } from "@heroui/react";
-import { addProductToCart } from "../../services/secvices"; //we made folder for services to make our code more clean
-
-
+import {
+  addProductToCart,
+  addProductToWishList,
+} from "../../services/secvices"; //we made folder for services to make our code more clean
 
 export default function ProductDetails() {
   const { id } = useParams(); //because we recieve id from path in App.jsx
   const [productDetails, setProductDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const[addToCartLoading,setAddToCartLoading]=useState(false)
+  const [addToCartLoading, setAddToCartLoading] = useState(false);
+  const [addToWishListLoading, setAddToWishListLoading] = useState(false);
+  const [addedToWishlist, setAddedToWishlist] = useState(false);
 
-//seeting for slider====>>>>>>>>>>
+  const handleAddToWishlist = () => {
+    addProductToWishList(id, setAddToWishListLoading);
+    setAddedToWishlist(true);
+  };
+
+  //seeting for slider====>>>>>>>>>>
   var settings = {
     dots: true,
     infinite: true,
@@ -45,24 +53,30 @@ export default function ProductDetails() {
       <div className="bg-slate-100 dark:bg-sky-950 p-3">
         <div className="flex items-center flex-wrap ">
           <div className="w-full md:w-1/3 px-4 mb-8">
-           
-            <Slider {...settings} className="w-3/4 bg-slate-100 mx-auto rounded-lg" >
-            {
-              productDetails?.images.map((img,index)=>{
-                return  <img
-                src={img}
-                key={index}
-                alt={productDetails?.title}
-                className="w-full  rounded-lg shadow-md "
-                id="main-image"
-              />
-              })
-            }
+            <Slider
+              {...settings}
+              className="w-3/4 bg-slate-100 mx-auto rounded-lg"
+            >
+              {productDetails?.images.map((img, index) => {
+                return (
+                  <img
+                    src={img}
+                    key={index}
+                    alt={productDetails?.title}
+                    className="w-full  rounded-lg shadow-md "
+                    id="main-image"
+                  />
+                );
+              })}
             </Slider>
           </div>
           <div className="w-full md:w-2/3 px-4">
-            <h2 className="text-3xl text-yellow-800 dark:text-yellow-500 font-bold mb-2">{productDetails?.title.split(" " ,3).join(" ")}</h2>
-            <p className="text-yellow-700 dark:text-yellow-500 mb-4 mt-4">SKU: WH1000XM4</p>
+            <h2 className="text-3xl text-yellow-800 dark:text-yellow-500 font-bold mb-2">
+              {productDetails?.title.split(" ", 3).join(" ")}
+            </h2>
+            <p className="text-yellow-700 dark:text-yellow-500 mb-4 mt-4">
+              SKU: WH1000XM4
+            </p>
             <div className="mb-4">
               <span className="text-2xl text-yellow-500 dark:text-yellow-500 font-bold mr-2">
                 ${productDetails?.price}
@@ -108,10 +122,18 @@ export default function ProductDetails() {
                 {productDetails?.ratingsQuatity} reviews)
               </span>
             </div>
-            <p className="text-yellow-700 p-6 dark:text-yellow-800 dark:bg-white dark:rounded-lg mb-6 line-clamp-2">{productDetails?.description}</p>
+            <p className="text-yellow-700 p-6 dark:text-yellow-800 dark:bg-white dark:rounded-lg mb-6 line-clamp-2">
+              {productDetails?.description}
+            </p>
 
             <div className="flex space-x-4 mb-6">
-              <Button isLoading={addToCartLoading} onPress={()=>addProductToCart(productDetails?._id,setAddToCartLoading)} className="bg-red-600 dark:bg-black dark:text-yellow-400 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2">
+              <Button
+                isLoading={addToCartLoading}
+                onPress={() =>
+                  addProductToCart(productDetails?._id, setAddToCartLoading)
+                }
+                className="bg-red-600 dark:bg-black dark:text-yellow-400 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -128,23 +150,26 @@ export default function ProductDetails() {
                 </svg>
                 Add to Cart
               </Button>
-              <button className="bg-gray-200 flex gap-2 items-center  text-yellow-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
+              <Button
+                isLoading={addToWishListLoading}
+                onPress={handleAddToWishlist}
+                href="#"
+                className={` mx-auto  bg-gray-200 flex gap-2 items-center text-gray-800 px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
+               ${
+                 addedToWishlist ? (
+                   <i className="fa-solid fa-heart text-red-500"></i>
+                 ) : (
+                   <i className="fa-solid fa-heart text-red"></i>
+                 )
+               }`}
+              >
+                <i
+                  className={`fa-solid fa-heart mr-2 h-6 w-6 ${
+                    addedToWishlist ? "text-red-500" : "text-white"
+                  }`}
+                ></i>
                 Wishlist
-              </button>
+              </Button>
             </div>
           </div>
         </div>
