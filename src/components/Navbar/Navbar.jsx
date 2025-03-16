@@ -14,12 +14,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { label } from "framer-motion/client";
 import { authContext } from "../../contexts/authContext";
 import { useSelector } from "react-redux";
+import { DarkModeContext } from "../../contexts/DarkMode.context";
 // import cookies from "cookies";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(authContext);
   const navigate = useNavigate();
+  const { darkMode, setDarkMode } = useContext(DarkModeContext);
   // const {counter}=useSelector((store)=>{
   //   return store.counter
   // })
@@ -52,13 +54,13 @@ export default function Navbar() {
             className="sm:hidden"
           />
           <NavbarBrand>
-            <p className="font-bold text-inherit text-red-500 dark:text-yellow-500 text-2xl">
+            <Link to={"/"} className="font-bold text-inherit text-red-500 dark:text-yellow-500 sm:text-[16px] lg:text-2xl">
               FreshCart
-            </p>
+            </Link>
           </NavbarBrand>
         </NavbarContent>
         {isLoggedIn && (
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarContent className="hidden sm:flex gap-2" justify="center">
             {menuItems.map((item, index) => {
               return (
                 <NavbarItem key={index}>
@@ -74,21 +76,20 @@ export default function Navbar() {
           </NavbarContent>
         )}
         {isLoggedIn ? (
-          <NavbarContent justify="end">
+          <NavbarContent className="md:justify-center lg:justify-end">
             <NavbarItem>
-              <Button
-                onPress={() => {
-                  navigate("/wishlist");
-                }}
+              <Link
+                to={"/wishlist"}
                 className="my-2 text-red-800 dark:text-red-500"
                 variant="ghost"
                 color="dark:danger"
               >
-                <span className="sm:w-12 mx-auto md:w-20">
-                  WishList <i class="fa-solid fa-heart"></i>
+                <span className=" p-1 ">
+                 <i className="fa-solid fa-heart me-1"></i>List
                 </span>
-              </Button>
+              </Link>
             </NavbarItem>
+
             <NavbarItem>
               <Button
                 onPress={logout}
@@ -101,6 +102,17 @@ export default function Navbar() {
                 Log Out
               </Button>
             </NavbarItem>
+
+            <NavbarItem>
+              <button
+                onClick={() => {
+                  setDarkMode(!darkMode);
+                }}
+                className="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+              >
+                {darkMode ? "☀️" : " 🌙"}
+              </button>
+            </NavbarItem>
           </NavbarContent>
         ) : (
           //else (:) here
@@ -108,7 +120,7 @@ export default function Navbar() {
             <NavbarItem className=" lg:flex">
               <Link to={"/signin"}>Login</Link>
             </NavbarItem>
-            <NavbarItem>
+            {/* <NavbarItem>
               <Link
                 to={"/register"}
                 className="bg-green-200 dark:bg-sky-700 p-2 rounded-md"
@@ -116,6 +128,16 @@ export default function Navbar() {
                 {" "}
                 Sign Up
               </Link>
+            </NavbarItem> */}
+            <NavbarItem>
+              <button
+                onClick={() => {
+                  setDarkMode(!darkMode);
+                }}
+                className=" rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+              >
+                {darkMode ? "☀️" : " 🌙"}
+              </button>
             </NavbarItem>
           </NavbarContent>
         )}
@@ -139,11 +161,3 @@ export default function Navbar() {
     </>
   );
 }
-
-
-
-
-
-
-
-

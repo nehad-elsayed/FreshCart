@@ -37,32 +37,30 @@ export default function Brands() {
                 />
             </Helmet>
       <section>
-        <Button
+        {/* <Button
           isLoading={isFetching}
           onPress={refetch}
-          className=" dark:bg-sky-800"
+          className=" dark:bg-sky-800 m-2"
         >
           {" "}
           <i className="fa-solid fa-rotate-right"></i>{" "}
-        </Button>
+        </Button> */}
 
-        <div className="container p-5 min-h-96">
+        <div className="container bg-slate-200 dark:bg-transparent p-5 min-h-96">
           <h1 className="p-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-sky-500 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-sky-200 dark:to-yellow-500 md:text-[100px] my-5 font-bold animate__animated animate__backInRight  ">
             All Brands
           </h1>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {data?.data.map((brand, index) => {
               return (
-                <div
-                  key={index}
-                  className="text-center p-3 bg-red-900 dark:bg-slate-200  rounded-lg"
-                >
+               
                   <img
+                  key={index}
                     className="animate__animated animate__slow animate__swing  mx-auto min-h-[200px] rounded-lg"
                     src={brand.image}
                   />
-                </div>
+               
               );
             })}
           </div>

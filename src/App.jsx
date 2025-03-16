@@ -24,6 +24,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import VerifyCode from "./pages/VerifyCode/VerifyCode";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import UserProvider from "./contexts/User.context";
+import { DarkModeProvider } from "./contexts/DarkMode.context";
 
 
 
@@ -152,7 +153,7 @@ let router = createBrowserRouter([
 function App() {
   return (
     <>
-
+<DarkModeProvider>
     <Provider store={store}>
     <AuthContextProvider>
         <QueryClientProvider client={query}>
@@ -164,7 +165,7 @@ function App() {
         <ToastContainer />
       </AuthContextProvider>
     </Provider>
-      
+    </DarkModeProvider>
     </>
   );
 }

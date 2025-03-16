@@ -44,7 +44,7 @@
 //       console.log(data);
 //       setIsloading(false)
 //       localStorage.setItem("token", data.token);
-//       navigate("/signin");
+//       navigate("/");
 //     } catch (error) {
 
 //       console.log(error);
