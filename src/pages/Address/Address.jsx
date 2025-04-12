@@ -51,7 +51,6 @@ export default function Address() {
 
       localStorage.setItem("userAddresses", cartId)
       setIsloading(false)
-      console.log(data)
       window.location.href= data?.session.url
   
     }

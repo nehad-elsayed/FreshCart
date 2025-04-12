@@ -40,14 +40,14 @@ export default function Categories() {
                 />
             </Helmet>
       <section className="min-h-96">
-        <Button
+        {/* <Button
           isLoading={isFetching}
           onPress={refetch}
           className="my-4 dark:bg-sky-800"
         >
           {" "}
           <i className="fa-solid fa-rotate-right"></i>{" "}
-        </Button>
+        </Button> */}
 
         <div className="container p-5">
           <h1 className="p-10 mb-3 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-sky-500 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-sky-200 dark:to-yellow-500 md:text-[70px] my-5 font-bold animate__animated animate__backInRight  ">
@@ -56,13 +56,12 @@ export default function Categories() {
           <div className="grid mt-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {data?.map((category, index) => {
               return (
-                <div key={index} className="p-3 bg-slate-200 rounded-lg">
+                <div key={index} className="p-3 bg-slate-200 rounded-lg flex flex-col justify-between">
                   <img
-                    className="min-h-[200px] rounded-lg"
+                    className=" rounded-lg min-h-[90%]"
                     src={category.image}
                   />
-
-                  <h2 className="animate__animated animate__bounceInDown animate__slow animate__delay-1s mt-2 p-2 text-2xl font-bold bg-white dark:bg-sky-900 text-red-500 dark:text-yellow-400 rounded-md">
+                  <h2 className="p-1 animate__animated animate__bounceInDown animate__slow animate__delay-1s  text-lg font-bold bg-white dark:bg-sky-900 text-red-500 dark:text-yellow-400 rounded-md">
                     {category.name.split(" ", 2).join(" ")}
                   </h2>
                 </div>

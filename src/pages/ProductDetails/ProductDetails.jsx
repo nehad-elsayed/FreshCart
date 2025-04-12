@@ -37,7 +37,6 @@ export default function ProductDetails() {
     let { data } = await axios.get(
       "https://ecommerce.routemisr.com/api/v1/products/" + id
     );
-    console.log(data.data);
     setProductDetails(data.data);
     setIsLoading(false);
   }

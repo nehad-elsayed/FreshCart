@@ -23,7 +23,6 @@ export default function Products() {
   const { products,isLoading } = useSelector((store) => {
     return store.products;
   });
-  console.log(products);
 
   useEffect(() => {
     dispatch(getAllProducts());

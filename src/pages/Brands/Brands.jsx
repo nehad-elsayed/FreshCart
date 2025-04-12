@@ -18,7 +18,6 @@ export default function Brands() {
     staleTime: 100000,
   });
 
-  console.log(data?.data);
 
   if (isError) {
     return <h3 className="text-red-500"> Error is : {error} </h3>;

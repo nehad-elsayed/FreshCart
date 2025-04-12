@@ -55,11 +55,9 @@ export default function Register() {
     axios
       .post("https://ecommerce.routemisr.com/api/v1/auth/signup", values)
       .then(({ data }) => {
-        console.log(data.message);
         if (data.message == "success") {
           navigate("/signin");
         }
-        console.log(data.message);
       })
       .catch((err) => {
         console.error(err.response.data.message);

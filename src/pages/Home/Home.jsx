@@ -31,7 +31,6 @@ export default function Home() {
     //  refetchOnWindowFocus: true, // should use staleTime with it // its the oppisite of interval background
   });
 
-  console.log(data?.data?.data);
 
   if (isError) {
     return <h3>{error}</h3>;
@@ -80,14 +79,14 @@ export default function Home() {
           <CategoriesSlider />
         </div>
       
-        <Button
+        {/* <Button
           isLoading={isFetching}
           onPress={refetch}
           className="my-4 dark:bg-sky-800"
         >
           {" "}
           <i className="fa-solid fa-rotate-right"></i>{" "}
-        </Button>
+        </Button> */}
         <div className="container grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8  dark:bg-sky-950 p-5">
           {data?.data?.data.map((product, index) => {
             return <Product product={product} key={index} />;

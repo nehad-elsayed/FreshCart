@@ -21,7 +21,6 @@ export default function Orders() {
         },
       }
     );
-    console.log(data.decoded.id);
     setUserID(data.decoded.id);
   }
 
@@ -37,7 +36,6 @@ export default function Orders() {
     );
   }
 
-  console.log(data?.data);
 
   if (isError) {
     return <h2 className="text-red-500">{error}</h2>;

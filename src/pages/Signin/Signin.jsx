@@ -47,17 +47,13 @@ export default function SignIn() {
     axios
       .post("https://ecommerce.routemisr.com/api/v1/auth/signin", values)
       .then(({ data }) => {
-        console.log(data.message);
         if (data.message == "success") {
           localStorage.setItem("token", data.token);
-          // cookies.set("token", data.token);
-
           setIsLoggedIn(true);
           navigate("/");
         }
       })
       .catch((err) => {
-        console.log(err.response.data.message);
         setErrMsg(err.response.data.message);
       })
       .finally(() => {
@@ -124,19 +120,19 @@ export default function SignIn() {
             Login
           </Button>
           {errMsg && (
-            <p className="text-red-400 font-semibold bg-red-100 w-fit mx-auto p-2 rounded">
+            <p className="  text-red-500 bg-red-100 dark:bg-transparent dark:text-yellow-500 w-fit mx-auto p-2 rounded">
               {errMsg}
             </p>
           )}{" "}
           <Link
             to={"/forgotpassword"}
-            className=" underline font-bold text-lg md:text-2xl"
+            className=" underline  text-small "
           >
             Forgot Password
           </Link>{" "}
           <Link
             to={"/register"}
-            className="text-green-600 font-bold dark:text-sky-500 text-lg md:text-2xl"
+            className="text-green-600 font-bold dark:text-sky-500 text-sm lg:text-medium"
           >
             Create New Account
           </Link>{" "}

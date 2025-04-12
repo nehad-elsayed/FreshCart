@@ -10,6 +10,7 @@ export const DarkModeProvider = ({ children }) => {
 useEffect(() => {
   if (darkMode) {
     document.documentElement.classList.add("dark");
+     //scrollbar here
   } else {
     document.documentElement.classList.remove("dark");
   }

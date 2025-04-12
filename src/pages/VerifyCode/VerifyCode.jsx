@@ -27,7 +27,6 @@ export default function VerifyCode() {
             toastId = toast.loading("Waiting...");
 
             const { data } = await axios.request(options);
-            console.log(data);
             
             if (data.status == "Success") {
                 toast.dismiss(toastId);

@@ -19,4 +19,3 @@ export function formatDate(isoString) {
 }
 
 // Example usage
-console.log(formatDate("2025-01-28T07:43:34.200Z")); // Output: "28th January 2025 at 7:43 AM"

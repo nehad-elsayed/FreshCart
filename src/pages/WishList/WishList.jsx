@@ -28,7 +28,6 @@ export default function Wishlist() {
     select: (res) => res.data.data,
   });
 
-  console.log(data);
   // setWishlistData(data)
 
   function goHome() {

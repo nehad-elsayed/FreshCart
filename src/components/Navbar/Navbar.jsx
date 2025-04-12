@@ -31,8 +31,9 @@ export default function Navbar() {
     { label: "Brands", href: "brands" },
     { label: "Categories", href: "categories" },
     { label: "Cart", href: "cart" },
-    { label: "Orders", href: "/allorders" },
     { label: "Products", href: "/products" },
+    { label: "Orders", href: "/allorders" },
+    
   ];
 
   function logout() {
@@ -44,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <HeroNavbar
-        className="border-b border-divider dark:bg-slate-800 dark:text-yellow-500"
+        className=" border-b border-divider dark:bg-slate-800 dark:text-yellow-500"
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
       >
@@ -60,7 +61,7 @@ export default function Navbar() {
           </NavbarBrand>
         </NavbarContent>
         {isLoggedIn && (
-          <NavbarContent className="hidden sm:flex gap-2" justify="center">
+          <NavbarContent className="hidden sm:flex gap-6" justify="center">
             {menuItems.map((item, index) => {
               return (
                 <NavbarItem key={index}>
@@ -76,7 +77,7 @@ export default function Navbar() {
           </NavbarContent>
         )}
         {isLoggedIn ? (
-          <NavbarContent className="md:justify-center lg:justify-end">
+          <NavbarContent className=" ms-3">
             <NavbarItem>
               <Link
                 to={"/wishlist"}
@@ -85,7 +86,7 @@ export default function Navbar() {
                 color="dark:danger"
               >
                 <span className=" p-1 ">
-                 <i className="fa-solid fa-heart me-1"></i>List
+                 <i className="fa-solid fa-heart me-1"></i>
                 </span>
               </Link>
             </NavbarItem>
@@ -108,7 +109,7 @@ export default function Navbar() {
                 onClick={() => {
                   setDarkMode(!darkMode);
                 }}
-                className="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+                
               >
                 {darkMode ? "☀️" : " 🌙"}
               </button>
@@ -130,14 +131,14 @@ export default function Navbar() {
               </Link>
             </NavbarItem> */}
             <NavbarItem>
-              <button
-                onClick={() => {
+              <Button
+                onPress={() => {
                   setDarkMode(!darkMode);
                 }}
-                className=" rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+                
               >
                 {darkMode ? "☀️" : " 🌙"}
-              </button>
+              </Button>
             </NavbarItem>
           </NavbarContent>
         )}

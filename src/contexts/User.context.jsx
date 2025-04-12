@@ -60,7 +60,6 @@ export default function UserProvider({ children }) {
 
             setUserImage(data.url);
             localStorage.setItem("userImage", data.url);
-            console.log(data.url);
         } catch (error) {
             console.log(error);
         }
