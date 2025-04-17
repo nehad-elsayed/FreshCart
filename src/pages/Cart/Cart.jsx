@@ -52,7 +52,7 @@ export default function Cart() {
                 />
             </Helmet>
       {numOfCartItems != 0 ? (
-        <div className="h-96 bg-slate-200 dark:bg-sky-950 flex flex-col md:flex-row   md:px-14 py-7 mx-auto">
+        <div className="min-h-96 bg-slate-200 dark:bg-sky-950 flex flex-col md:flex-row   md:px-14 py-7 mx-auto">
           {/* <!-- My Cart --> */}
           <div className="w-full flex flex-col h-fit gap-4 p-4  ">
             <div className="flex items-center  justify-between">

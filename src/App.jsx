@@ -25,6 +25,7 @@ import VerifyCode from "./pages/VerifyCode/VerifyCode";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import UserProvider from "./contexts/User.context";
 import { DarkModeProvider } from "./contexts/DarkMode.context";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -35,8 +36,8 @@ let router = createBrowserRouter([
     path: "",
     element: <Layout />,
     children: [
-      {
-        index: true,
+     {
+         index: true,
         element: (
           <ProtectedRoute>
             <Home />{" "}
@@ -159,6 +160,7 @@ function App() {
         <QueryClientProvider client={query}>
           <UserProvider>
           <RouterProvider router={router}></RouterProvider>
+          <Toaster/>
           <ReactQueryDevtools />
           </UserProvider>
         </QueryClientProvider>
