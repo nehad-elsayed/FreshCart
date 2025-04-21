@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import {
   addProductToCart,
   addProductToWishList,
+  removeWishListItem,
 } from "../../services/secvices";
 import "animate.css";
 
@@ -13,10 +14,50 @@ export default function Product({ product }) {
   const [addToWishListLoading, setAddToWishListLoading] = useState(false);
   const [addedToWishlist, setAddedToWishlist] = useState(false);
 
+// caht gpt 
+
+const [cart, setCart] = useState([]);
+
+const addToCart = (product) => {
+  const exists = cart.find((item) => item.id === product._id);
+  if (!exists) {
+    setCart([...cart, product]);
+  }
+};
+
+
+// chat gpt 
+
+
   const handleAddToWishlist = () => {
     addProductToWishList(product._id, setAddToWishListLoading);
     setAddedToWishlist(true);
   };
+//   function isInWishlist(id){
+// id=product._id
+// if()
+//   }
+ const[productID,setProductID]=useState()
+  const [wishlist, setWishlist] = useState([]);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+useEffect(() => {
+    const fetchWishlist = async (productId) => {
+      try {
+        const response = await axios.get(
+          `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
+        );
+        setWishlist(response.data.data);
+        setProductID(data.data.product._id)
+        setIsInWishlist(true)
+      } catch (error) {
+        console.error("Error fetching wishlist", error);
+      }
+    };
+
+    fetchWishlist();
+  }, []);
+
   // const[productID,setProductID]=useState()
   // const [wishlist, setWishlist] = useState([]);
   // const [isInWishlist, setIsInWishlist] = useState(false);
@@ -159,8 +200,9 @@ export default function Product({ product }) {
 
           <Button
             isLoading={addToWishListLoading}
-            onPress={handleAddToWishlist}
-            href="#"
+            onPress={()=>{
+           handleAddToWishlist()
+            }}
             className={` mx-auto my-4 bg-gray-200 flex gap-2 items-center text-gray-800  px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
    ${
      addedToWishlist ? (
@@ -171,7 +213,7 @@ export default function Product({ product }) {
    }`}
           >
             <i
-              className={`fa-solid fa-heart mr-2 h-6 w-6 ${
+              className={`fa-solid fa-heart text-[1rem] ${
                 addedToWishlist ? "text-red-500" : "text-white"
               }`}
             ></i>

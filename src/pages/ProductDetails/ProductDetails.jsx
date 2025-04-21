@@ -151,12 +151,14 @@ export default function ProductDetails() {
               </Button>
               <Button
                 isLoading={addToWishListLoading}
-                onPress={handleAddToWishlist}
+                onPress={()=>{
+                handleAddToWishlist()
+                }}
                 href="#"
                 className={` mx-auto  bg-gray-200 flex gap-2 items-center text-gray-800 px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
                ${
                  addedToWishlist ? (
-                   <i className="fa-solid fa-heart text-red-500"></i>
+                   <i className="fa-solid fa-heart text-red-500 text-lg"></i>
                  ) : (
                    <i className="fa-solid fa-heart text-red"></i>
                  )

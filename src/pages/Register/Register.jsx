@@ -91,7 +91,6 @@ export default function Register() {
           <div className="md:col-span-2">
             {" "}
             <Input
-              isInvalid={errors.name && touched.name}
               errorMessage={errors.name}
               onBlur={handleBlur}
               value={values.name}
