@@ -101,15 +101,7 @@ export async function clearCart(
   setNumOfCartItems(0);
 }
 
-export async function updateProductCuount(
-  productId,
-  count,
-  currentCount,
-  setCartData,
-  setNumOfCartItems,
-  setIncrementLoading,
-  setDecrementLoading
-) {
+export async function updateProductCuount(productId,count,currentCount,setCartData,setNumOfCartItems,setIncrementLoading,setDecrementLoading) {
   if (currentCount > count) {
     setDecrementLoading(true);
   }
@@ -117,24 +109,19 @@ export async function updateProductCuount(
     setIncrementLoading(true);
   }
 
-  const { data } = await axios.put(
-    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-    {
-      count,
-    },
+  const { data } = await axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,{count},
     {
       headers: {
         token: localStorage.getItem("token"),
       },
     }
-  )(data);
+  )
   setDecrementLoading(false);
   setIncrementLoading(false);
-  setCartData(data.data);
-  setNumOfCartItems(data.numOfCartItems);
+  setCartData(data?.data);
+  setNumOfCartItems(data?.numOfCartItems);
 }
 
-// https://ecommerce.routemisr.com/api/v1/wishlist
 export async function addProductToWishList(productId, setAddToWishListLoading) {
   setAddToWishListLoading(true);
   const { data } = await axios.post(

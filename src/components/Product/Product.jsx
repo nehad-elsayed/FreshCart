@@ -8,6 +8,7 @@ import {
   removeWishListItem,
 } from "../../services/secvices";
 import "animate.css";
+import axios from "axios";
 
 export default function Product({ product }) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
@@ -33,10 +34,7 @@ const addToCart = (product) => {
     addProductToWishList(product._id, setAddToWishListLoading);
     setAddedToWishlist(true);
   };
-//   function isInWishlist(id){
-// id=product._id
-// if()
-//   }
+
  const[productID,setProductID]=useState()
   const [wishlist, setWishlist] = useState([]);
   const [isInWishlist, setIsInWishlist] = useState(false);

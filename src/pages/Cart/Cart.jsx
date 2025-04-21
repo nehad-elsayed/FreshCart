@@ -72,8 +72,8 @@ export default function Cart() {
                 }
                 className="text-red-500 animate__animated animate__bounceInDown animate__delay-2s "
               >
-                {" "}
-                Clear <i className="text-red-500 fa-solid fa-trash"></i>{" "}
+               
+                Clear <i className="text-red-500 fa-solid fa-trash"></i>
               </Button>
             </div>
 

@@ -58,7 +58,7 @@ export default function CartProduct({
             </p>
           </div>
           {/* Remove Product Icon */}
-          <div className="self-center  ">
+          <div className="self-center ">
             <Button
               isLoading={isLoading}
               className=" min-w-0 p-2 "
@@ -147,6 +147,7 @@ export default function CartProduct({
             min={1}
             className="w-8 my-2 h-10 text-center bg-sky-600  text-gray-100 text-sm outline-none border border-gray-100 dark:border-gray-800 rounded-md"
           />
+
           <Button
             isLoading={incrementLoading}
             onPress={() => {
