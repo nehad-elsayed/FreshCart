@@ -27,8 +27,6 @@ import UserProvider from "./contexts/User.context";
 import { DarkModeProvider } from "./contexts/DarkMode.context";
 import { Toaster } from "react-hot-toast";
 
-
-
 let query = new QueryClient();
 
 let router = createBrowserRouter([
@@ -36,13 +34,9 @@ let router = createBrowserRouter([
     path: "",
     element: <Layout />,
     children: [
-     {
-         index: true,
-        element: (
-          <ProtectedRoute>
-            <Home />{" "}
-          </ProtectedRoute>
-        ),
+      {
+        index: true,
+        element: <Home />,
       },
       {
         path: "/register",
@@ -62,45 +56,26 @@ let router = createBrowserRouter([
       },
       {
         path: "/categories",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Categories />
-          </ProtectedRoute>
-        ),
+        element: <Categories />,
       },
       {
         path: "/brands",
-        element: (
-          <ProtectedRoute>
-            <Brands />
-          </ProtectedRoute>
-        ),
+        element: <Brands />,
       },
       {
         path: "/products",
-        element: (
-          <ProtectedRoute>
-            <Products />
-          </ProtectedRoute>
-        ),
+        element: <Products />,
       },
       {
         path: "/forgotpassword",
-        element: (
-         
-            <ForgotPassword />
-         
-        ),
+        element: <ForgotPassword />,
       },
       {
         path: "/verifyCode",
         element: <VerifyCode />,
       },
-       { path: "/resetpassword",
-        element: <ResetPassword />,
-      },
-      
+      { path: "/resetpassword", element: <ResetPassword /> },
+
       {
         path: "/cart",
         element: (
@@ -119,7 +94,7 @@ let router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-     
+
       {
         path: "/productDetails/:id",
         element: (
@@ -154,20 +129,20 @@ let router = createBrowserRouter([
 function App() {
   return (
     <>
-<DarkModeProvider>
-    <Provider store={store}>
-    <AuthContextProvider>
-        <QueryClientProvider client={query}>
-          <UserProvider>
-          <RouterProvider router={router}></RouterProvider>
-          <Toaster/>
-          <ReactQueryDevtools />
-          </UserProvider>
-        </QueryClientProvider>
-        <ToastContainer />
-      </AuthContextProvider>
-    </Provider>
-    </DarkModeProvider>
+      <DarkModeProvider>
+        <Provider store={store}>
+          <AuthContextProvider>
+            <QueryClientProvider client={query}>
+              <UserProvider>
+                <RouterProvider router={router}></RouterProvider>
+                <Toaster />
+                <ReactQueryDevtools />
+              </UserProvider>
+            </QueryClientProvider>
+            <ToastContainer />
+          </AuthContextProvider>
+        </Provider>
+      </DarkModeProvider>
     </>
   );
 }

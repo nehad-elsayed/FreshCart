@@ -56,7 +56,7 @@ export default function Brands() {
                
                   <img
                   key={index}
-                    className="animate__animated animate__slow animate__swing  mx-auto min-h-[200px] rounded-lg"
+                    className=" mx-auto min-h-[200px] rounded-lg"
                     src={brand.image}
                   />
                

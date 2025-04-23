@@ -1,42 +1,35 @@
-
 import React, { useEffect, useState } from "react";
 import { addProductToCart, removeWishListItem } from "../../services/secvices";
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import { Button, CardFooter } from "@heroui/react";
 import axios from "axios";
 
-export default function WishListProduct({
-  product,
-  setWishlistData,
-  refetch
-}) {
+export default function WishListProduct({ product, setWishlistData, refetch }) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [isLoadingWish, setIsLoadingWish] = useState(false);
-const[productID,setProductID]=useState()
+  const [productID, setProductID] = useState();
 
-const [wishlist, setWishlist] = useState([]);
-const [isInWishlist, setIsInWishlist] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
-useEffect(() => {
-  const fetchWishlist = async (productId) => {
-    try {
-      const response = await axios.get(
-        `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
-      );
-      setWishlist(response.data.data);
-      setProductID(response.data.data.product._id)
+  // useEffect(() => {
+  //   const fetchWishlist = async (productId) => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`);
+  //       setWishlist(response.data.data);
+  //       setProductID(response.data.data.product._id)
 
-    } catch (error) {
-      console.error("Error fetching wishlist", error);
-    }
-  };
+  //     } catch (error) {
+  //       console.error("Error fetching wishlist", error);
+  //     }
+  //   };
 
-  fetchWishlist();
-}, []);
-useEffect(() => {
-  setIsInWishlist(wishlist.some((item) => item.id == productID));
-}, [wishlist, productID]);
-
+  //   fetchWishlist();
+  // }, []);
+  // useEffect(() => {
+  //   setIsInWishlist(wishlist.some((item) => item.id == productID));
+  // }, [wishlist, productID]);
 
   return (
     <>
@@ -81,17 +74,26 @@ useEffect(() => {
           <hr />
 
           <Button
-            onPress={
-              () =>
-            removeWishListItem(product._id, setIsLoadingWish, setWishlistData,refetch)}
+            onPress={() =>
+              removeWishListItem(
+                product._id,
+                setIsLoadingWish,
+                setWishlistData,
+                refetch
+              )
+            }
             isLoading={isLoadingWish}
             className=" min-w-0 p-2 "
             endContent={
-              <span style={{ color: isInWishlist ? "red" : "gray", fontSize: "24px" }}>
-              ❤️
-            </span>
+              <span
+                style={{
+                  color: isInWishlist ? "red" : "gray",
+                  fontSize: "24px",
+                }}
+              >
+                ❤️
+              </span>
             }
-           
             color="transparent"
           ></Button>
         </CardFooter>
@@ -99,8 +101,6 @@ useEffect(() => {
     </>
   );
 }
-
-
 
 // import React, { useEffect, useState } from "react";
 // import { addProductToCart, removeWishListItem } from "../../services/secvices";
@@ -116,13 +116,9 @@ useEffect(() => {
 //     const [productId, setProductId] = useState(product._id);
 //   const [isLoadingWish, setIsLoadingWish] = useState(false);
 
-
 //   // useEffect(() => {
 //   //   setWishlistData(data);
 //   // }, [wishlistData]);
-
-
-  
 
 //   return (
 //     <>

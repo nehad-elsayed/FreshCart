@@ -145,10 +145,10 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className="h-lvh">
-          {" "}
+        <div className="h-lvh flex items-center justify-center flex-col gap-2">
+          
           <h2 className=" mt-6 capitalize text-2xl font-bold text-center ">
-            {" "}
+         
             <span className="text-red-600">Cart Items (0)</span> No Products in
             your Cart{" "}
           </h2>

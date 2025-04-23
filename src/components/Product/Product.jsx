@@ -17,14 +17,14 @@ export default function Product({ product }) {
 
 // caht gpt 
 
-const [cart, setCart] = useState([]);
+// const [cart, setCart] = useState([]);
 
-const addToCart = (product) => {
-  const exists = cart.find((item) => item.id === product._id);
-  if (!exists) {
-    setCart([...cart, product]);
-  }
-};
+// const addToCart = (product) => {
+//   const exists = cart.find((item) => item.id === product._id);
+//   if (!exists) {
+//     setCart([...cart, product]);
+//   }
+// };
 
 
 // chat gpt 
@@ -39,22 +39,20 @@ const addToCart = (product) => {
   const [wishlist, setWishlist] = useState([]);
   const [isInWishlist, setIsInWishlist] = useState(false);
 
-useEffect(() => {
-    const fetchWishlist = async (productId) => {
-      try {
-        const response = await axios.get(
-          `https://ecommerce.routemisr.com/api/v1/wishlist/`+productId
-        );
-        setWishlist(response.data.data);
-        setProductID(data.data.product._id)
-        setIsInWishlist(true)
-      } catch (error) {
-        console.error("Error fetching wishlist", error);
-      }
-    };
+// useEffect(() => {
+//     const fetchWishlist = async (productId) => {
+//       try {
+//         const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`);
+//         setWishlist(response.data.data);
+//         setProductID(data.data.product._id)
+//         setIsInWishlist(true)
+//       } catch (error) {
+//         console.error("Error fetching wishlist", error);
+//       }
+//     };
 
-    fetchWishlist();
-  }, []);
+//     fetchWishlist();
+//   }, []);
 
   // const[productID,setProductID]=useState()
   // const [wishlist, setWishlist] = useState([]);

@@ -160,13 +160,13 @@ export default function Register() {
           <Button
             type="submit"
             variant="shadow"
-            className="animate__animated animate__delay-1s animate__backInUp animate-slow md:col-span-2 text-white bg-green-600 dark:bg-sky-700 dark:text-white"
+            className=" md:col-span-2 text-white bg-slate-600 dark:bg-sky-700 dark:text-white"
             isLoading={isLoading}
           >
             Register
           </Button>
           {errMsg && (
-            <p className="text-red-400 font-semibold text-center md:col-span-2 w-1/2 capitalize text-2xl mx-auto bg-red-100  p-2 rounded">
+            <p className="text-red-500 font-semibold text-center md:col-span-2 w-1/2 capitalize text-2xl mx-auto bg-red-100  p-2 rounded">
               {errMsg}
             </p>
           )}

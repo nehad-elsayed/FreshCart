@@ -61,7 +61,7 @@ export default function Categories() {
                     className=" rounded-lg min-h-[90%]"
                     src={category.image}
                   />
-                  <h2 className="p-1 animate__animated animate__bounceInDown animate__slow animate__delay-1s  text-lg font-bold bg-white dark:bg-sky-900 text-red-500 dark:text-yellow-400 rounded-md">
+                  <h2 className="p-1 animate__animated animate__bounceInDown animate__slow animate__delay-1s  text-lg font-bold bg-white dark:bg-sky-900 text-black dark:text-slate-100 rounded-md">
                     {category.name.split(" ", 2).join(" ")}
                   </h2>
                 </div>

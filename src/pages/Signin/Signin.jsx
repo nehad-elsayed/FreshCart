@@ -32,13 +32,9 @@ export default function SignIn() {
       ),
   });
 
-
-
   const initialValues = {
-    
     email: "",
-    password:"",
- 
+    password: "",
   };
 
   function onSubmit() {
@@ -79,9 +75,6 @@ export default function SignIn() {
         />
       </Helmet>
 
-
-
-      
       <form onSubmit={handleSubmit}>
         <div className="w-11/12 sm:w-[50%] py-20 mx-auto grid gap-4">
           <div className="">
@@ -114,7 +107,7 @@ export default function SignIn() {
           <Button
             type="submit"
             variant="shadow"
-            className=" animate__animated  animate__backInUp animate-slow text-white bg-green-600 dark:bg-sky-800"
+            className=" animate__animated  animate__backInUp animate-slow text-white bg-slate-600 dark:bg-sky-800"
             isLoading={isLoading}
           >
             Login
@@ -124,15 +117,12 @@ export default function SignIn() {
               {errMsg}
             </p>
           )}{" "}
-          <Link
-            to={"/forgotpassword"}
-            className=" underline  text-small "
-          >
+          <Link to={"/forgotpassword"} className=" underline  text-small ">
             Forgot Password
           </Link>{" "}
           <Link
             to={"/register"}
-            className="text-green-600 font-bold dark:text-sky-500 text-sm lg:text-medium"
+            className="text-slate-600 font-bold dark:text-sky-500 text-sm lg:text-medium"
           >
             Create New Account
           </Link>{" "}

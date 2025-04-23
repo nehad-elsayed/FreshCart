@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <HeroNavbar
-        className=" border-b border-divider dark:bg-slate-800 dark:text-yellow-500"
+        className=" border-b border-divider dark:bg-slate-800 dark:text-slate-100"
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
       >
@@ -55,7 +55,7 @@ export default function Navbar() {
             className="sm:hidden"
           />
           <NavbarBrand>
-            <Link to={"/"} className="font-bold text-inherit text-red-500 dark:text-yellow-500 sm:text-[16px] lg:text-2xl">
+            <Link to={"/"} className="font-bold text-inherit text-black dark:text-slate-100 sm:text-[16px] lg:text-2xl">
               FreshCart
             </Link>
           </NavbarBrand>
@@ -66,7 +66,7 @@ export default function Navbar() {
               return (
                 <NavbarItem key={index}>
                   <Link
-                    className="text-red-500 dark:text-yellow-500"
+                    className="text-black dark:text-slate-100"
                     to={item.href}
                   >
                     {item.label}

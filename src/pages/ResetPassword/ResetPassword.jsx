@@ -166,7 +166,7 @@ export default function ResetPassword() {
       );
       setIsLoading(false)
 
-      navigate("/");
+      navigate("/signin");
     } catch (error) {
       console.log(error);
       toast.dismiss(toastId);
@@ -206,7 +206,7 @@ export default function ResetPassword() {
           content="Welcome to our ResetPassword page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
         />
       </Helmet>
-      <section className="flex flex-col justify-center items-center gap-8 mt-12">
+      <section className="h-lvh flex flex-col justify-center items-center gap-8 mt-1">
         <header className="flex flex-col gap-4 text-center">
           <h2 className="font-extrabold text-primary text-2xl">
             Create New password

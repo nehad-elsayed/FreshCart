@@ -74,14 +74,14 @@ export default function VerifyCode() {
                     content="Welcome to our VerifyCode page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
                 />
             </Helmet>
-            <section className="h-96">
+            <section className="h-lvh flex items-center justify-center flex-col">
                 <header className="text-center space-y-2">
                     <i className="fa-regular fa-envelope text-primary text-3xl"></i>
                     <h2 className="text-2xl font-bold">Check your email</h2>
                     <p className="text-xs">Reset code sent to your email</p>
                 </header>
                 <form onSubmit={formik.handleSubmit}>
-                    <div className="mt-5 mb-5 text-center w-1/2 mx-auto">
+                    <div className="mt-5 mb-5 text-center  mx-auto">
                         <Input
                             type="text"
                             name="resetCode"

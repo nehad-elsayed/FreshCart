@@ -66,7 +66,7 @@ export default function Wishlist() {
             );
           })
         ) : (
-          <div className="text-center h-96 col-span-4">
+          <div className="text-center h-lvh gap-3 col-span-4 flex items-center justify-center flex-col">
             <h2 className="text-red-500  text-center font-bold text-lg md:text-4xl">
               Sorry !! No Products in Your Wish List
             </h2>
