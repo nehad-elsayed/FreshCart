@@ -206,9 +206,7 @@ function loginFrist(){
 
           <Button
             isLoading={addToWishListLoading}
-            onPress={()=>{
-           handleAddToWishlist()
-            }}
+            onPress={()=>{isLoggedIn? handleAddToWishlist() : loginFrist() }}
             className={` mx-auto my-4 bg-gray-200 flex gap-2 items-center text-gray-800  px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
    ${
      addedToWishlist ? (
