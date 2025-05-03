@@ -169,7 +169,7 @@ function loginFrist(){
           <Button
             isLoading={addToCartLoading}
             onPress={() => { isLoggedIn? addProductToCart(product._id, setAddToCartLoading): loginFrist() }}
-            className="w-full hover:opacity-90 flex items-center mx-auto justify-center rounded-md bg-slate-900 dark:bg-slate-600 dark:text-white px-5 py-2 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 animate__animated animate__bounceInDown animate__delay-3s animate__slow "
+            className="w-full hover:opacity-90 flex items-center mx-auto justify-center rounded-md bg-slate-900 dark:bg-slate-600 dark:text-white px-5 py-2 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 animate__animated animate__bounceInDown"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

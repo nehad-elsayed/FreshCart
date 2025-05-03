@@ -4,9 +4,8 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/LoadingScreen/Loading";
 import { Button } from "@heroui/react";
-import "animate.css"
+import "animate.css";
 import { Helmet } from "react-helmet";
-
 
 export default function Categories() {
   function getCategories() {
@@ -33,12 +32,12 @@ export default function Categories() {
   return (
     <>
       <Helmet>
-                <title>Categories</title>
-                <meta
-                    name="description"
-                    content="Welcome to our Categories page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
-                />
-            </Helmet>
+        <title>Categories</title>
+        <meta
+          name="description"
+          content="Welcome to our Categories page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
+        />
+      </Helmet>
       <section className="min-h-96">
         {/* <Button
           isLoading={isFetching}
@@ -56,12 +55,15 @@ export default function Categories() {
           <div className="grid mt-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {data?.map((category, index) => {
               return (
-                <div key={index} className="p-3 bg-slate-200 rounded-lg flex flex-col justify-between">
+                <div
+                  key={index}
+                  className="p-3 bg-slate-200 rounded-lg flex flex-col justify-between"
+                >
                   <img
                     className=" rounded-lg min-h-[90%]"
                     src={category.image}
                   />
-                  <h2 className="p-1 animate__animated animate__bounceInDown animate__slow animate__delay-1s  text-lg font-bold bg-white dark:bg-sky-900 text-black dark:text-slate-100 rounded-md">
+                  <h2 className="p-1 animate__animated animate__bounceInDown   text-lg font-bold bg-white dark:bg-sky-900 text-black dark:text-slate-100 rounded-md">
                     {category.name.split(" ", 2).join(" ")}
                   </h2>
                 </div>
