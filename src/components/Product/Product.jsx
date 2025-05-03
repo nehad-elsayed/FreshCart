@@ -1,19 +1,23 @@
 // import { Button } from "@heroui/react";
 import { Button } from "@heroui/react";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   addProductToCart,
   addProductToWishList,
   removeWishListItem,
 } from "../../services/secvices";
 import "animate.css";
-import axios from "axios";
+import { authContext } from "../../contexts/authContext";
+import toast from "react-hot-toast";
+
 
 export default function Product({ product }) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToWishListLoading, setAddToWishListLoading] = useState(false);
   const [addedToWishlist, setAddedToWishlist] = useState(false);
+const{isLoggedIn}= useContext(authContext);
+const navigate=useNavigate()
 
 // caht gpt 
 
@@ -78,6 +82,12 @@ export default function Product({ product }) {
   // useEffect(() => {
   //   setIsInWishlist(wishlist.some((item) => item.id === productID));
   // }, [wishlist, productID]);
+
+
+function loginFrist(){
+  toast.error("you should Login frist")
+  navigate("/signin")
+}
 
   return (
     <>
@@ -158,7 +168,7 @@ export default function Product({ product }) {
           </div>
           <Button
             isLoading={addToCartLoading}
-            onPress={() => addProductToCart(product._id, setAddToCartLoading)}
+            onPress={() => { isLoggedIn? addProductToCart(product._id, setAddToCartLoading): loginFrist() }}
             className="w-full hover:opacity-90 flex items-center mx-auto justify-center rounded-md bg-slate-900 dark:bg-slate-600 dark:text-white px-5 py-2 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 animate__animated animate__bounceInDown animate__delay-3s animate__slow "
           >
             <svg
