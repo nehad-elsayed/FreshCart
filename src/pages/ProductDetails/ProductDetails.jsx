@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/LoadingScreen/Loading";
 import Slider from "react-slick";
 import { Button } from "@heroui/react";
@@ -8,6 +8,8 @@ import {
   addProductToCart,
   addProductToWishList,
 } from "../../services/secvices"; //we made folder for services to make our code more clean
+import { authContext } from "../../contexts/authContext";
+import toast from "react-hot-toast";
 
 export default function ProductDetails() {
   const { id } = useParams(); //because we recieve id from path in App.jsx
@@ -16,6 +18,8 @@ export default function ProductDetails() {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [addToWishListLoading, setAddToWishListLoading] = useState(false);
   const [addedToWishlist, setAddedToWishlist] = useState(false);
+  const { isLoggedIn } = useContext(authContext);
+  const navigate = useNavigate();
 
   const handleAddToWishlist = () => {
     addProductToWishList(id, setAddToWishListLoading);
@@ -47,6 +51,12 @@ export default function ProductDetails() {
   if (isLoading) {
     return <Loading />; //loading screen
   }
+
+  function loginFrist() {
+    toast.error("you should Login frist");
+    navigate("/signin");
+  }
+
   return (
     <>
       <div className="bg-slate-100 dark:bg-sky-950 p-3">
@@ -128,9 +138,16 @@ export default function ProductDetails() {
             <div className="flex space-x-4 mb-6">
               <Button
                 isLoading={addToCartLoading}
-                onPress={() =>
-                  addProductToCart(productDetails?._id, setAddToCartLoading)
-                }
+                onPress={() => {
+                  {
+                    isLoggedIn
+                      ? addProductToCart(
+                          productDetails?._id,
+                          setAddToCartLoading
+                        )
+                      : loginFrist();
+                  }
+                }}
                 className="bg-red-600 dark:bg-black dark:text-yellow-400 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2"
               >
                 <svg
@@ -151,8 +168,10 @@ export default function ProductDetails() {
               </Button>
               <Button
                 isLoading={addToWishListLoading}
-                onPress={()=>{
-                handleAddToWishlist()
+                onPress={() => {
+                  {
+                    isLoggedIn ? handleAddToWishlist() : loginFrist();
+                  }
                 }}
                 href="#"
                 className={` mx-auto  bg-gray-200 flex gap-2 items-center text-gray-800 px-5 py-2.5 text-center text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2

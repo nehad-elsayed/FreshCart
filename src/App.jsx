@@ -98,9 +98,9 @@ let router = createBrowserRouter([
       {
         path: "/productDetails/:id",
         element: (
-          <ProtectedRoute>
+          
             <ProductDetails />
-          </ProtectedRoute>
+       
         ),
       },
       {
