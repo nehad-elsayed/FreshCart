@@ -4,7 +4,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/LoadingScreen/Loading";
 import { Button } from "@heroui/react";
-import "animate.css"
+import "animate.css";
 import { Helmet } from "react-helmet";
 export default function Brands() {
   function getBrands() {
@@ -18,7 +18,6 @@ export default function Brands() {
     staleTime: 100000,
   });
 
-
   if (isError) {
     return <h3 className="text-red-500"> Error is : {error} </h3>;
   }
@@ -29,12 +28,12 @@ export default function Brands() {
   return (
     <>
       <Helmet>
-                <title>Brands</title>
-                <meta
-                    name="description"
-                    content="Welcome to our Brands page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
-                />
-            </Helmet>
+        <title>Brands</title>
+        <meta
+          name="description"
+          content="Welcome to our Brands page! Here, you’ll find an extensive range of high-quality items carefully curated for your shopping pleasure."
+        />
+      </Helmet>
       <section>
         {/* <Button
           isLoading={isFetching}
@@ -50,16 +49,14 @@ export default function Brands() {
             All Brands
           </h1>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 min-h-dvh">
             {data?.data.map((brand, index) => {
               return (
-               
-                  <img
+                <img
                   key={index}
-                    className=" mx-auto min-h-[200px] rounded-lg"
-                    src={brand.image}
-                  />
-               
+                  className=" mx-auto min-h-[200px] rounded-lg"
+                  src={brand.image}
+                />
               );
             })}
           </div>

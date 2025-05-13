@@ -36,7 +36,7 @@ export default function WishListProduct({ product, setWishlistData, refetch }) {
       <Card className="py-4 bg-black text-white dark:bg-slate-200 dark:text-sky-900">
         <CardHeader className="pb-0 pt-2 px-4 flex flex-col text-center items-center justify-center">
           <p className="text-tiny uppercase font-bold">${product.price}</p>
-          <small className="">{product.brand.name}</small>
+          <small className=""></small>
           <h4 className="font-bold text-large">
             {" "}
             {product.title.split(" ", 3).join(" ")}

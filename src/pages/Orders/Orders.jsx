@@ -55,7 +55,7 @@ export default function Orders() {
       <section className="min-h-96">
         {data?.data.length !== 0 ? (
           <>
-            {" "}
+            
             <h1 className="p-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-sky-500 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-sky-200 dark:to-yellow-500 md:text-[100px] my-5 font-bold animate__animated animate__backInRight  ">
               All Orders
             </h1>
@@ -110,7 +110,7 @@ export default function Orders() {
                                       </p>
                                       <p className="text-sm leading-none text-gray-800">
                                         <span className="text-black font-bold italic">
-                                          Brand : {item.product.brand.name}{" "}
+                                          Brand : 
                                         </span>
                                       </p>
                                     </div>

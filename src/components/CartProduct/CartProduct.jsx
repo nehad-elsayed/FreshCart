@@ -43,7 +43,7 @@ export default function CartProduct({
               </p>
               <p className=" text-white dark:text-blue-950 text-sm">
                 <span className="font-bold">Brand </span>:{" "}
-                {product.product.brand.name}
+               
               </p>
             </div>
           </div>

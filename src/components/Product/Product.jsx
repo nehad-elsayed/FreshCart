@@ -91,6 +91,7 @@ function loginFrist(){
 
   return (
     <>
+
       <div className="sm:mt-4 md:mt-0 hover:scale-110 transition duration-500 relative flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100 bg-slate-500 text-sky-400 dark:text-sky-800 dark:bg-white shadow-md">
         <Link
           to={"/productDetails/" + product._id}

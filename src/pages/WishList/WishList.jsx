@@ -55,7 +55,7 @@ export default function Wishlist() {
 
       <div className="grid md:grid-cols-4 gap-3 p-5 min-h-96">
         {data.length != 0 ? (
-          data.map((product, index) => {
+          data?.map((product, index) => {
             return (
               <WishListProduct
                 product={product}
